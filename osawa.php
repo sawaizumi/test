@@ -70,7 +70,7 @@ __LINES__
 			</tr>
 			<tr>
 				<td>
-					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
+					<input type = "submit" value = "いいね" onclick = "local__OnClick( 'good' )" />
 					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
 				</td>
 			</tr>
