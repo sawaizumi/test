@@ -18,7 +18,13 @@
 }
 function Main( $arStrings_Argument )
 {
-	echo local_BuildHTML();
+	$eString_HTML = local_BuildHTML();
+
+	$eString_Lines = "<option value = \"1\" >‚ä‚è‚©‚à‚ß</option><option value = \"etc\" >...</option>";
+
+	$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
+
+	echo $eString_HTML;
 }
 
 
@@ -32,8 +38,7 @@ function local_BuildHTML()
 <tr>
 	<td>
 		<select name = "line" >
-			<option value = "1" >line1</option>
-			<option value = "2" >line2</option>
+__LINES__
 		</select>
 	</td>
 	<td>
