@@ -21,7 +21,7 @@ function local_OnClick( eString_Submit )
 		return false;
 	}
 
-	function callback_getCurrentPosition( ePosition )
+	function callback_getCurrentPosition__Success( ePosition )
 	{
 		alert( ePosition.coords.latitude );
 		document[g_eString_FormName].position_l.value = "";
