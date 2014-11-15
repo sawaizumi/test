@@ -23,8 +23,13 @@ function local_OnClick( eString_Submit )
 
 	function callback_getCurrentPosition__Success( ePosition )
 	{
-		alert( ePosition.coords.latitude );
-		document[g_eString_FormName].position_l.value = "";
+		document[g_eString_FormName].position_latitude.value = ePosition.coords.latitude;
+		document[g_eString_FormName].position_longitude.value = ePosition.coords.longitude;
+		document[g_eString_FormName].position_altitude.value = ePosition.coords.altitude;
+		document[g_eString_FormName].position_accuracy.value = ePosition.coords.accuracy;
+		document[g_eString_FormName].position_altitudeaccuracy.value = ePosition.coords.altitudeAccuracy;
+		document[g_eString_FormName].position_heading.value = ePosition.coords.heading;
+		document[g_eString_FormName].position_speed.value = ePosition.coords.speed;
 	}
 	function callback_getCurrentPosition__Failure( eError )
 	{
