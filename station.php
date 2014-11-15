@@ -89,7 +89,8 @@ function Main( $arStrings_Argument )
 
 		$eString_Debug .= print_r( $arStrings_Debug, TRUE );
 		$eString_Debug .= "<br />";
-		$arStrings_Sorted = array_multisort( $arStrings_Distance, $arStrings, SORT_NUMERIC );
+		$arStrings_Sorted = $arStrings;
+		array_multisort( $arStrings_Distance, $arStrings_Sorted, SORT_NUMERIC );
 		$eString_Debug .= print_r( $arStrings_Sorted, TRUE );
 		$eString_Debug .= "<br />";
 	}
