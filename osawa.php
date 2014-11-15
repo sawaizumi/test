@@ -20,7 +20,7 @@ function Main( $arStrings_Argument )
 {
 	$eString_HTML = local_BuildHTML();
 
-	$eString_Lines = "<option value = \"1\" >Ç‰ÇËÇ©Ç‡Çﬂ</option><option value = \"etc\" >...</option>";
+	$eString_Lines = "<option value = \"1\" >„ÇÜ„Çä„Åã„ÇÇ„ÇÅ</option><option value = \"etc\" >...</option>";
 
 	$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
 
