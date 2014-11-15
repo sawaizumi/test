@@ -19,9 +19,9 @@
 }
 function Main( $arStrings_Argument )
 {
-	$eString_Submit = $_POST["submit"];
+	$eString_Submit = $_POST["test"];
 
-	if ( defined( $eString_Submit ) )
+	if ( $eString_Submit )
 	{
 		$eString_HTML = $eString_Submit;
 	}
@@ -43,12 +43,15 @@ function local_BuildHTML()
 	$eString_HTML = <<<EOHTML
 <html>
 <head>
+	<meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8" />
+
 	<script type = "text/javascript" src = "./osawa.js" ></script>
 </head>
 
 
 <body>
 	<form name = "test" action = "osawa.php" method = "POST" >
+		<input type = "hidden" name = "test" value = "test" />
 		<table>
 			<tr>
 				<td>
@@ -67,7 +70,7 @@ __LINES__
 			</tr>
 			<tr>
 				<td>
-					<input type = "submit" value = "いいね" onclick = "local__OnClick( 'good' )" />
+					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
 					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
 				</td>
 			</tr>

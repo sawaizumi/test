@@ -13,6 +13,7 @@ function local__OnClick( eString_Submit )
 //	eString_Submit
 
 	document[g_eString_FormName].submit.value = eString_Submit;
+	alert( document[g_eString_FormName].test );
 }
 
 
