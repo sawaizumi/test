@@ -22,6 +22,15 @@ function Main( $arStrings_Argument )
 	try
 	{
 		$ePDO = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
+
+		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
+		$eStatement = $eDB->prepare( $eString_SQL );
+		$eStatement->execute( $arArguments_SQL );
+		$arStrings = array();
+		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+		{
+			$arStrings[] = $eRow;
+		}
 	}
 	catch ( PDOException $e )
 	{
@@ -44,6 +53,7 @@ function Main( $arStrings_Argument )
 		$eString_Lines = "<option value = \"1\" >ゆりかもめ</option><option value = \"etc\" >...</option>";
 
 		$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
+		$eString_HTML = str_replace( "__DEBUG__", print_r( $arStrings, TRUE ), $eString_HTML );
 	}
 
 	echo $eString_HTML;
@@ -89,6 +99,7 @@ __LINES__
 			</tr>
 		</table>
 	</form>
+__DEBUG__
 </body>
 </html>
 EOHTML;
