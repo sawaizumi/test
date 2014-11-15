@@ -1,4 +1,5 @@
 <?php
+// 日本語UTF-8, LF
 
 
 // include
@@ -32,28 +33,37 @@ function local_BuildHTML()
 {
 	$eString_HTML = <<<EOHTML
 <html>
+<head>
+	<script type = "text/javascript" src = "./osawa.js" ></script>
+</head>
+
+
 <body>
-<form name = "test" action = "osawa.php" method = "POST" >
-<table>
-<tr>
-	<td>
-		<select name = "line" >
+	<form name = "test" action = "osawa.php" method = "POST" >
+		<table>
+			<tr>
+				<td>
+					<select name = "line" >
 __LINES__
-		</select>
-	</td>
-	<td>
-		<select name = "station" >
-			<option value = "1" >station1</option>
-			<option value = "2" >station2</option>
-		</select>
-	</td>
-	<td>
-		<input type = "submit" value = "good" />
-		<input type = "submit" value = "bad" />
-	</td>
-</tr>
-</table>
-</form>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name = "station" >
+						<option value = "1" >station1</option>
+						<option value = "2" >station2</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type = "submit" value = "いいね" onclick = "local__OnClick( 'good' )" />
+					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
 EOHTML;
