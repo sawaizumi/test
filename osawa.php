@@ -19,11 +19,20 @@
 }
 function Main( $arStrings_Argument )
 {
-	$eString_HTML = local_BuildHTML();
+	$eString_Submit = $_POST["submit"];
 
-	$eString_Lines = "<option value = \"1\" >ゆりかもめ</option><option value = \"etc\" >...</option>";
+	if ( defined( $eString_Submit ) )
+	{
+		$eString_HTML = $eString_Submit;
+	}
+	else
+	{
+		$eString_HTML = local_BuildHTML();
 
-	$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
+		$eString_Lines = "<option value = \"1\" >ゆりかもめ</option><option value = \"etc\" >...</option>";
+
+		$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
+	}
 
 	echo $eString_HTML;
 }
