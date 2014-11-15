@@ -24,6 +24,8 @@ function Main( $arStrings_Argument )
 	if ( $eString_Submit )
 	{
 		$eString_HTML = $eString_Submit;
+		$eString_HTML .= "<br />";
+		$eString_HTML .= $_POST["position_l"];
 	}
 	else
 	{
@@ -52,6 +54,7 @@ function local_BuildHTML()
 <body>
 	<form name = "test" action = "osawa.php" method = "POST" >
 		<input type = "hidden" name = "test" value = "test" />
+		<input type = "hidden" name = "position_l" value = "test" />
 		<table>
 			<tr>
 				<td>
@@ -70,8 +73,8 @@ __LINES__
 			</tr>
 			<tr>
 				<td>
-					<input type = "submit" value = "いいね" onclick = "local__OnClick( 'good' )" />
-					<input type = "submit" value = "だめね" onclick = "local__OnClick( 'bad' )" />
+					<input type = "submit" value = "いいね" onclick = "local_OnClick( 'good' )" />
+					<input type = "submit" value = "だめね" onclick = "local_OnClick( 'bad' )" />
 				</td>
 			</tr>
 		</table>
