@@ -67,7 +67,7 @@ function Main( $arStrings_Argument )
 			$eString_Longitude = "139.779327";
 		}
 
-		$eString_SQL = "SELECT * FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.03 ) AND `c__lon` < ( ? + 0.03 ) AND `c__lat` > ( ? - 0.03 ) AND `c__lat` < ( ? + 0.03 );";
+		$eString_SQL = "SELECT * FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.02 ) AND `c__lon` < ( ? + 0.02 ) AND `c__lat` > ( ? - 0.02 ) AND `c__lat` < ( ? + 0.02 );";
 		$arArguments_SQL = array();
 		$arArguments_SQL[] = $eString_Longitude;
 		$arArguments_SQL[] = $eString_Longitude;
