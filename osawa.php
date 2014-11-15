@@ -56,18 +56,19 @@ function local_BuildHTML()
 		<input type = "hidden" name = "test" value = "test" />
 		<input type = "hidden" name = "position_l" value = "test" />
 		<table>
-			<tr>
-				<td>
-					<select name = "line" >
-__LINES__
-					</select>
-				</td>
-			</tr>
+			
 			<tr>
 				<td>
 					<select name = "station" >
 						<option value = "1" >station1</option>
 						<option value = "2" >station2</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name = "line" >
+__LINES__
 					</select>
 				</td>
 			</tr>
