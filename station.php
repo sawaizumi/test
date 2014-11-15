@@ -23,7 +23,7 @@ function Main( $arStrings_Argument )
 	{
 		$eDB = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
 
-		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
+		$eString_SQL = "SET NAMES utf8;";
 		$arArguments_SQL = array();
 		$eStatement = $eDB->prepare( $eString_SQL );
 		$eStatement->execute( $arArguments_SQL );
@@ -34,6 +34,19 @@ function Main( $arStrings_Argument )
 		}
 
 		$eString_Debug = "";
+		$eString_Debug .= print_r( $arStrings, TRUE );
+		$eString_Debug .= "<br />";
+
+		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
+		$arArguments_SQL = array();
+		$eStatement = $eDB->prepare( $eString_SQL );
+		$eStatement->execute( $arArguments_SQL );
+		$arStrings = array();
+		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+		{
+			$arStrings[] = $eRow;
+		}
+
 		$eString_Debug .= print_r( $arStrings, TRUE );
 		$eString_Debug .= "<br />";
 
