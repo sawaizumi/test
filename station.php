@@ -35,6 +35,7 @@ function Main( $arStrings_Argument )
 
 		$eString_Debug = "";
 		$eString_Debug .= print_r( $arStrings, TRUE );
+		$eString_Debug .= "<br />";
 
 		if ( $_GET[latitude] )
 		{
@@ -53,7 +54,7 @@ function Main( $arStrings_Argument )
 			$eString_Longitude = "139.779327";
 		}
 
-		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.2 ) AND `c__lon` < ( ? + 0.2 ) AND `c__lat` > ( ? - 0.2 ) AND `c__lat` < ( ? + 0.2 );";
+		$eString_SQL = "SELECT * FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.05 ) AND `c__lon` < ( ? + 0.05 ) AND `c__lat` > ( ? - 0.05 ) AND `c__lat` < ( ? + 0.05 );";
 		$arArguments_SQL = array();
 		$arArguments_SQL[] = $eString_Longitude;
 		$arArguments_SQL[] = $eString_Longitude;
@@ -64,7 +65,7 @@ function Main( $arStrings_Argument )
 		$arStrings = array();
 		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
 		{
-			$arStrings[] = $eRow;
+			$arStrings[] = $eRow["c__station_name"];
 		}
 
 		$eString_Debug .= print_r( $arStrings, TRUE );
