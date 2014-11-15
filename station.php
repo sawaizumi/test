@@ -31,6 +31,37 @@ function Main( $arStrings_Argument )
 		{
 			$arStrings[] = $eRow;
 		}
+
+		$eString_Debug = "";
+		$eString_Debug .= print_r( $arStrings, TRUE );
+
+		if ( $_GET[latitude] )
+		{
+			$eString_Latitude = $_GET[latitude];
+		}
+		else
+		{
+			$eString_Latitude = "35.617593";
+		}
+		if ( $_GET[longitude] )
+		{
+			$eString_Longitude = $_GET[longitude];
+		}
+		else
+		{
+			$eString_Longitude = "139.779327";
+		}
+
+		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station` WHERE [c__lon] > ( ? - 0.2 ) AND [c__lon] < ( ? + 0.2 ) AND [c__lat] > ( ? - 0.2 ) AND [c__lat] < ( ? + 0.2 );";
+		$eStatement = $eDB->prepare( $eString_SQL );
+		$eStatement->execute( $arArguments_SQL );
+		$arStrings = array();
+		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+		{
+			$arStrings[] = $eRow;
+		}
+
+		$eString_Debug .= print_r( $arStrings, TRUE );
 	}
 	catch ( PDOException $e )
 	{
@@ -53,7 +84,7 @@ function Main( $arStrings_Argument )
 		$eString_Lines = "<option value = \"1\" >ゆりかもめ</option><option value = \"etc\" >...</option>";
 
 		$eString_HTML = str_replace( "__LINES__", $eString_Lines, $eString_HTML );
-		$eString_HTML = str_replace( "__DEBUG__", print_r( $arStrings, TRUE ), $eString_HTML );
+		$eString_HTML = str_replace( "__DEBUG__", $eString_Debug, $eString_HTML );
 	}
 
 	echo $eString_HTML;
