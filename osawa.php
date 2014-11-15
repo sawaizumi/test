@@ -74,8 +74,8 @@ __LINES__
 			</tr>
 			<tr>
 				<td>
-					<input type = "submit" value = "いいね" onclick = "local_OnClick( 'good' )" />
-					<input type = "submit" value = "だめね" onclick = "local_OnClick( 'bad' )" />
+					<input type = "submit" value = "いいね！” onclick = "local_OnClick( 'good' )" />
+					<input type = "submit" value = “まぁまぁ” onclick = "local_OnClick( 'bad' )" />
 				</td>
 			</tr>
 		</table>
