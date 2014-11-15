@@ -24,6 +24,7 @@ function Main( $arStrings_Argument )
 		$eDB = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
 
 		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
+		$arArguments_SQL = array();
 		$eStatement = $eDB->prepare( $eString_SQL );
 		$eStatement->execute( $arArguments_SQL );
 		$arStrings = array();
@@ -53,6 +54,11 @@ function Main( $arStrings_Argument )
 		}
 
 		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station` WHERE [c__lon] > ( ? - 0.2 ) AND [c__lon] < ( ? + 0.2 ) AND [c__lat] > ( ? - 0.2 ) AND [c__lat] < ( ? + 0.2 );";
+		$arArguments_SQL = array();
+		$arArguments_SQL[] = $eString_Longitude;
+		$arArguments_SQL[] = $eString_Longitude;
+		$arArguments_SQL[] = $eString_Latitude;
+		$arArguments_SQL[] = $eString_Latitude;
 		$eStatement = $eDB->prepare( $eString_SQL );
 		$eStatement->execute( $arArguments_SQL );
 		$arStrings = array();
