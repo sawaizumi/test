@@ -12,7 +12,7 @@ function local__OnClick( eString_Submit )
 {
 //	eString_Submit
 
-	alert( document.g_eString_FormName.submit.value );
+	alert( document[g_eString_FormName].submit.value );
 }
 
 
