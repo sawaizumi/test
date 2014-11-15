@@ -21,7 +21,7 @@ function Main( $arStrings_Argument )
 {
 	try
 	{
-		$ePDO = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
+		$eDB = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
 
 		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
 		$eStatement = $eDB->prepare( $eString_SQL );
