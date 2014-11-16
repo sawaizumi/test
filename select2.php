@@ -106,9 +106,9 @@ function Main( $arStrings_Argument )
 		$eJSON->lines = $arLines;
 */
 		$eString = "";
-		foreach ( $arStations as $eRow )
+		foreach ( $arStrings_Sorted as $eRow )
 		{
-			$eString .= ", " . $eRow["c__line_cd"];
+			$eString .= ", " . $eRow["ac__line_cd"];
 		}
 		if ( $eString )
 		{
