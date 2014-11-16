@@ -81,7 +81,7 @@ function Main( $arStrings_Argument )
 		}
 		$eJSON->stations = $arStations;
 
-		$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( SELECT `c__line_cd` FROM `d__train`.`t__station` WHERE `at__S`.`c__lon` > ( ? - 0.02 ) AND `at__S`.`c__lon` < ( ? + 0.02 ) AND `at__S`.`c__lat` > ( ? - 0.02 ) AND `at__S`.`c__lat` < ( ? + 0.02 ) );";
+		$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( SELECT `c__line_cd` FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.02 ) AND `c__lon` < ( ? + 0.02 ) AND `c__lat` > ( ? - 0.02 ) AND `c__lat` < ( ? + 0.02 ) );";
 		$arArguments_SQL = array();
 		$arArguments_SQL[] = $eString_Longitude;
 		$arArguments_SQL[] = $eString_Longitude;
