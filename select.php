@@ -105,13 +105,13 @@ function Main( $arStrings_Argument )
 
 		$eJSON["stations"] = $arStrings_Station;
 
-		$eJSON["debug"] = $eString_Debug;
 	}
 	catch ( PDOException $e )
 	{
 		$eJSON["error"] = $e->getMessage();
 	}
 
+	$eJSON["debug"] = $eString_Debug;
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
 	echo $g_eString_JSON;
