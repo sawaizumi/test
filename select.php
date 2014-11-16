@@ -19,19 +19,7 @@
 }
 function Main( $arStrings_Argument )
 {
-	$eString_JSON = $_REQUEST( "json" );
-	if ( $eString_JSON )
-	{
-		$eJSON = json_decode( rawurldecode( $eString_JSON ) );
-	}
-	if ( $eJSON )
-	{
-	}
-	else
-	{
-		$eJSON = json_decode( "{\"analyze_request\":false}" );
-	}
-
+	$eJSON = json_decode( "{\"analyze_request\":false}" );
 
 	try
 	{
@@ -49,10 +37,10 @@ function Main( $arStrings_Argument )
 	}
 	catch ( PDOException $e )
 	{
-		$eJSON["error"] = $e->getMessage();
+		$eJSON->error_message = $e->getMessage();
 	}
 
-	$eJSON["debug"] = $eString_Debug;
+	$eJSON->debug = $arStrings_Debug;
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
 	echo $g_eString_JSON;
