@@ -49,7 +49,7 @@ function Main( $arStrings_Argument )
 			$arStrings[] = $eRow;
 		}
 
-		$eString_SQL = "SELECT `at__S`.`c__station_cd` AS `ac__station_cd`, `at__S`.`c__station_name` AS `ac__station_name`, `at__S`.`c__lon` AS `ac__lon`, `at__S`.`c__lat` AS `ac__lat`, `at__L`.`c__line_cd` AS `ac__line_cd`.`c__line_name` AS `ac__line_name` FROM `d__train`.`t__station` AS `at__S` INNER JOIN `d__train`.`t__line` AS `at__L` ON `at__S`.`c__line_cd` = `at__L`.`c__line_cd` WHERE `at__S`.`c__lon` > ( ? - 0.02 ) AND `at__S`.`c__lon` < ( ? + 0.02 ) AND `at__S`.`c__lat` > ( ? - 0.02 ) AND `at__S`.`c__lat` < ( ? + 0.02 );";
+		$eString_SQL = "SELECT `at__S`.`c__station_cd` AS `ac__station_cd`, `at__S`.`c__station_name` AS `ac__station_name`, `at__S`.`c__lon` AS `ac__lon`, `at__S`.`c__lat` AS `ac__lat`, `at__L`.`c__line_cd` AS `ac__line_cd`, `at__L`.`c__line_name` AS `ac__line_name` FROM `d__train`.`t__station` AS `at__S` INNER JOIN `d__train`.`t__line` AS `at__L` ON `at__S`.`c__line_cd` = `at__L`.`c__line_cd` WHERE `at__S`.`c__lon` > ( ? - 0.02 ) AND `at__S`.`c__lon` < ( ? + 0.02 ) AND `at__S`.`c__lat` > ( ? - 0.02 ) AND `at__S`.`c__lat` < ( ? + 0.02 );";
 		$arArguments_SQL = array();
 		$arArguments_SQL[] = $eString_Longitude;
 		$arArguments_SQL[] = $eString_Longitude;
