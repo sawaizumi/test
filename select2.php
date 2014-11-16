@@ -81,7 +81,7 @@ function Main( $arStrings_Argument )
 		}
 		$eJSON->stations = $arStations;
 
-		$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( SELECT `c__line_cd` FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.02 ) AND `c__lon` < ( ? + 0.02 ) AND `c__lat` > ( ? - 0.02 ) AND `c__lat` < ( ? + 0.02 ) );";
+/*		$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( SELECT `c__line_cd` FROM `d__train`.`t__station` WHERE `c__lon` > ( ? - 0.02 ) AND `c__lon` < ( ? + 0.02 ) AND `c__lat` > ( ? - 0.02 ) AND `c__lat` < ( ? + 0.02 ) );";
 		$arArguments_SQL = array();
 		$arArguments_SQL[] = $eString_Longitude;
 		$arArguments_SQL[] = $eString_Longitude;
@@ -94,6 +94,44 @@ function Main( $arStrings_Argument )
 		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
 		{
 			$arStrings[] = $eRow;
+		}
+		$arLines = array();
+		$arStrings_Sorted = $arStrings;
+		foreach ( $arStrings_Sorted as $eRow )
+		{
+			$aaLine = array();
+			$aaLine["id"] = $eRow["c__line_cd"];
+			$aaLine["name"] = $eRow["c__line_name"];
+			$arLines[] = $aaLine;
+		}
+		$eJSON->lines = $arLines;
+*/
+		$eString = "";
+		foreach ( $arStations as $eRow )
+		{
+			$eString .= ", " . $eRow[""];
+		}
+		if ( $eString )
+		{
+			$eString = substr( $eString, 2 );
+			$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( " . $eString . " );";
+			$arArguments_SQL = array();
+			$arArguments_SQL[] = $eString_Longitude;
+			$arArguments_SQL[] = $eString_Longitude;
+			$arArguments_SQL[] = $eString_Latitude;
+			$arArguments_SQL[] = $eString_Latitude;
+			$eStatement = $eDB->prepare( $eString_SQL );
+			$eStatement->execute( $arArguments_SQL );
+			$arStrings = array();
+			$arStrings_Debug = array();
+			while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+			{
+				$arStrings[] = $eRow;
+			}
+		}
+		else
+		{
+			$arStrings = array();
 		}
 		$arLines = array();
 		$arStrings_Sorted = $arStrings;
