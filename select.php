@@ -34,13 +34,31 @@ function Main( $arStrings_Argument )
 		{
 			$arStrings[] = $eRow;
 		}
+
+		$eString_Debug = "";
+		$eString_Debug .= print_r( $arStrings, TRUE );
+		$eString_Debug .= "<br />";
+
+		$eString_SQL = "SELECT COUNT( * ) FROM `d__train`.`t__station`;";
+		$arArguments_SQL = array();
+		$eStatement = $eDB->prepare( $eString_SQL );
+		$eStatement->execute( $arArguments_SQL );
+		$arStrings = array();
+		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+		{
+			$arStrings[] = $eRow;
+		}
+
+		$eString_Debug .= print_r( $arStrings, TRUE );
+		$eString_Debug .= "<br />";
+
 	}
 	catch ( PDOException $e )
 	{
 		$eJSON->error_message = $e->getMessage();
 	}
 
-	$eJSON->debug = $arStrings_Debug;
+	$eJSON->debug = $eString_Debug;
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
 	echo $g_eString_JSON;
