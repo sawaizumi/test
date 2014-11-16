@@ -19,7 +19,9 @@
 }
 function Main( $arStrings_Argument )
 {
-	$eJSON = json_decode( "{\"analyze_request\":false}" );
+	$eString_JSON = "{\"stations\":[{\"id\": 9931109, \"name\": \"テレコムセンター\", \"lat\": 35.617593, \"lon\": 139.779327}]}";
+//	$eJSON = json_decode( "{\"analyze_request\":false}" );
+	$eJSON = json_decode( $eString_JSON );
 
 	try
 	{
@@ -58,10 +60,71 @@ function Main( $arStrings_Argument )
 		$eJSON->error_message = $e->getMessage();
 	}
 
-	$eJSON->debug = $eString_Debug;
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
-	echo $g_eString_JSON;
+	echo $eString_JSON;
+}
+
+
+function local_JSON_Encode( $eJSON )
+{
+	if ( is_array( $eJSON ) )
+	{
+		$eString_JSON = local_JSON_Encode_Array( $eJSON );
+	}
+	else
+	{
+		$eString_JSON = "{" . $eJSON . "}";
+	}
+
+	return $eString_JSON;
+}
+
+
+function local_JSON_Encode_Array( $eJSON )
+{
+	if ( array_diff_key( $eJSON, array_keys( array_keys( $eJSON ) ) ) )
+	{
+		$eString_JSON = local_JSON_Encode_Assoc( $eJSON );
+	}
+	else
+	{
+		$eString_JSON = "[";
+		foreach ( $eJSON as $eValue )
+		{
+			if ( is_array( $eJSON ) )
+			{
+				$eString_JSON = local_JSON_Encode_Array( $eValue ), ",";
+			}
+			else
+			{
+				$eString_JSON .= $eValue . ",";
+			}
+		}
+		$eString_JSON .= "]";
+	}
+
+	return $eString_JSON;
+}
+
+
+function local_JSON_Encode_Assoc( $eJSON )
+{
+	$eString_JSON = "{";
+	foreach ( $eJSON as $eKey => $eValue )
+	{
+		if ( is_array( $eJSON ) )
+		{
+			$eString_JSON = "\"" . $eKey . "\":" . local_JSON_Encode_Array( $eValue ), ",";
+		}
+		else
+		{
+			$eString_JSON .= "\"" . $eKey . "\":" . $eValue . ",";
+		}
+	}
+	$eString_JSON .= "}";
+
+	return $eString_JSON;
 }
 
 
