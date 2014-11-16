@@ -20,8 +20,7 @@
 function Main( $arStrings_Argument )
 {
 	$eString_JSON = "{\"stations\":[{\"id\": 9931109, \"name\": \"テレコムセンター\", \"lat\": 35.617593, \"lon\": 139.779327}]}";
-	$eJSON = json_decode( "{\"analyze_request\":false}" );
-//	$eJSON = json_decode( $eString_JSON );
+	$eJSON = json_decode( $eString_JSON );
 
 	try
 	{
@@ -60,6 +59,7 @@ function Main( $arStrings_Argument )
 		$eJSON->error_message = $e->getMessage();
 	}
 
+	$eJSON->debug = $eString_Debug;
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
 	echo $eString_JSON;
