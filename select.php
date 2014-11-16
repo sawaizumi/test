@@ -21,6 +21,13 @@ function Main( $arStrings_Argument )
 {
 	$eString_JSON = $_REQUEST( "json" );
 	$eJSON = json_decode( rawurldecode( $eString_JSON ) );
+	if ( $eJSON )
+	{
+	}
+	else
+	{
+		$eJSON = json_decode( "{\"analyze_request\":false}" );
+	}
 
 	try
 	{
