@@ -22,7 +22,7 @@ function Main( $arStrings_Argument )
 	$eString_JSON = "{\"stations\":[{\"id\": 9931109, \"name\": \"テレコムセンター\", \"lat\": 35.617593, \"lon\": 139.779327}]}";
 //	$eJSON = json_decode( "{\"analyze_request\":false}" );
 //	$eJSON = json_decode( $eString_JSON );
-
+/*
 	try
 	{
 		$eDB = new PDO( "mysql:dbname=d__train;host=tcth2014-den2.cloudapp.net", "test", "password" );
@@ -59,7 +59,7 @@ function Main( $arStrings_Argument )
 	{
 		$eJSON->error_message = $e->getMessage();
 	}
-
+*/
 //	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
 	echo $eString_JSON;
