@@ -75,6 +75,7 @@ function Main( $arStrings_Argument )
 			$aaStation = array();
 			$aaStation["id"] = $eRow["ac__station_cd"];
 			$aaStation["name"] = $eRow["ac__station_name"] . "(" . $eRow["ac__line_name"] . ")";
+			$aaStation["line_id"] = $eRow["ac__line_cd"];
 			$aaStation["lat"] = $eRow["ac__lat"];
 			$aaStation["lon"] = $eRow["ac__lon"];
 			$arStations[] = $aaStation;
