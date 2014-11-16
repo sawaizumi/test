@@ -38,14 +38,19 @@ function local_OnLoad()
 		try
 		{
 			eReceiver = JSON.parse( eXMLHttpRequest.responseText );
-			alert( eXMLHttpRequest.responseText );
 
 			var eElement;
 
-			eElement = document.getElementById( "id__select__line" );
+			eElement = document.getElementById( "id__select__station" );
 			if ( eElement )
 			{
-				eElement.options[i] = new Option( oname, ovalue );
+				if ( !( eReceiver.stations == undefined ) )
+				{
+					for ( var i = 0; i < eReceiver.stations.length; i++ )
+					{
+						eElement.options[i] = new Option( eReceiver.stations[i].name, eReceiver.stations[i].code );
+					}
+				}
 			}
 		}
 		catch ( eError )

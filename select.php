@@ -100,7 +100,7 @@ function Main( $arStrings_Argument )
 		$arStrings_Station = array();
 		foreach ( $arStrings_Sorted as $eRow )
 		{
-			$arStrings_Station[] = $eRow["c__station_name"];
+			$arStrings_Station[] = array( "code" => $eRow["c__station_cd"], "name" => $eRow["c__station_name"] );
 		}
 
 		$eJSON["stations"] = $arStrings_Station;
