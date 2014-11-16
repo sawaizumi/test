@@ -62,7 +62,8 @@ function Main( $arStrings_Argument )
 	$eJSON = json_decode( "{\"analyze_request\":false}" );
 	$eString_JSON = json_encode( $eJSON );
 	header( "Content-type: text/html; charset=UTF-8" );
-	echo $g_eString_JSON;
+//	echo $g_eString_JSON;
+	echo "{\"analyze_request\":false}";
 }
 
 
