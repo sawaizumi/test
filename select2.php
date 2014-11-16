@@ -80,6 +80,31 @@ function Main( $arStrings_Argument )
 			$arStations[] = $aaStation;
 		}
 		$eJSON->stations = $arStations;
+
+		$eString_SQL = "SELECT * FROM `d__train`.`t__line` WHERE `c__line_cd` IN ( SELECT `c__line_cd` FROM `d__train`.`t__station` WHERE `at__S`.`c__lon` > ( ? - 0.02 ) AND `at__S`.`c__lon` < ( ? + 0.02 ) AND `at__S`.`c__lat` > ( ? - 0.02 ) AND `at__S`.`c__lat` < ( ? + 0.02 ) );";
+		$arArguments_SQL = array();
+		$arArguments_SQL[] = $eString_Longitude;
+		$arArguments_SQL[] = $eString_Longitude;
+		$arArguments_SQL[] = $eString_Latitude;
+		$arArguments_SQL[] = $eString_Latitude;
+		$eStatement = $eDB->prepare( $eString_SQL );
+		$eStatement->execute( $arArguments_SQL );
+		$arStrings = array();
+		$arStrings_Debug = array();
+		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
+		{
+			$arStrings[] = $eRow;
+		}
+		$arLines = array();
+		$arStrings_Sorted = $arStrings;
+		foreach ( $arStrings_Sorted as $eRow )
+		{
+			$aaLine = array();
+			$aaLine["id"] = $eRow["c__line_cd"];
+			$aaLine["name"] = $eRow["c__line_name"];
+			$arLines[] = $aaLine;
+		}
+		$eJSON->lines = $arLines;
 	}
 	catch ( PDOException $e )
 	{
