@@ -90,7 +90,6 @@ function Main( $arStrings_Argument )
 		$eStatement = $eDB->prepare( $eString_SQL );
 		$eStatement->execute( $arArguments_SQL );
 		$arStrings = array();
-		$arStrings_Debug = array();
 		while ( $eRow = $eStatement->fetch( PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT ) )
 		{
 			$arStrings[] = $eRow;
@@ -109,7 +108,7 @@ function Main( $arStrings_Argument )
 		$eString = "";
 		foreach ( $arStations as $eRow )
 		{
-			$eString .= ", " . $eRow[""];
+			$eString .= ", " . $eRow["c__line_cd"];
 		}
 		if ( $eString )
 		{
@@ -128,6 +127,8 @@ function Main( $arStrings_Argument )
 			{
 				$arStrings[] = $eRow;
 			}
+
+			$eString_Debug .= $eString_SQL;
 		}
 		else
 		{
