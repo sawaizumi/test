@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8" />
+
+	<script type = "text/javascript" src = "./select.js" ></script>
+</head>
+
+
+<body onload = "local_OnLoad()" >
+	<div id = "id__debug" >
+	</div>
+	<form name = "test" action = "select.php" method = "POST" >
+		<input type = "hidden" name = "test" value = "test" />
+		<input type = "hidden" name = "position_l" value = "test" />
+		<table>
+			<tr>
+				<td>
+					<select id = "id__select__line" name = "line" >
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select id = "id__select__station" name = "station" >
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type = "submit" value = "いいね" onclick = "local_OnClick( 'good' )" />
+					<input type = "submit" value = "だめね" onclick = "local_OnClick( 'bad' )" />
+				</td>
+			</tr>
+		</table>
+	</form>
+__DEBUG__
+</body>
+</html>
