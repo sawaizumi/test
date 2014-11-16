@@ -20,7 +20,10 @@
 function Main( $arStrings_Argument )
 {
 	$eString_JSON = $_REQUEST( "json" );
-	$eJSON = json_decode( rawurldecode( $eString_JSON ) );
+	if ( $eString_JSON )
+	{
+		$eJSON = json_decode( rawurldecode( $eString_JSON ) );
+	}
 	if ( $eJSON )
 	{
 	}
@@ -28,6 +31,7 @@ function Main( $arStrings_Argument )
 	{
 		$eJSON = json_decode( "{\"analyze_request\":false}" );
 	}
+
 
 	try
 	{
